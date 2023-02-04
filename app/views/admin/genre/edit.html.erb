@@ -1,0 +1,6 @@
+<h2>種目編集</h2>
+<%= form_with model:@genre, url:admin_genres_path, method: :post do |f| %>
+<p>種目名</p>
+<%= f.text_field :genre %>
+<%= f.submit '更新' %>
+<% end %>

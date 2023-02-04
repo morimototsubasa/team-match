@@ -1,0 +1,10 @@
+<h2>種目追加</h2>
+<%= form_with model:@genre, url:admin_genres_path, method: :post do |f| %>
+<p>種目名</p>
+<%= f.text_field :genre %>
+<%= f.submit '追加' %>
+<% end %>
+<h2>種目一覧</h2>
+<% @genre.each do |genre| %>
+<p>種目<%= genre.genre %></p>
+<% end %>
