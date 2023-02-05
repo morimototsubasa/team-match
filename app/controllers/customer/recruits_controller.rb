@@ -21,6 +21,8 @@ class Customer::RecruitsController < ApplicationController
   end
   
   def update
+    recruit = Recruit.find(params[:id])
+    recruit.update
   end
   
   private
