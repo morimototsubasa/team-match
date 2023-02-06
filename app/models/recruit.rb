@@ -1,4 +1,4 @@
 class Recruit < ApplicationRecord
-  has_many :genre
+  has_many :genres
   belongs_to :customer
 end

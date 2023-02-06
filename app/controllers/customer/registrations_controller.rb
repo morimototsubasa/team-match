@@ -12,8 +12,8 @@ before_action :configure_permitted_parameters, if: :devise_controller?
       root_path
     end
  end
-  
-  
+
+
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :customer
       root_path
@@ -23,7 +23,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
       root_path
     end
   end
-  
+
 def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :phone_number, :school_name])
 end

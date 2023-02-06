@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :customers
       resources :genres
+      root to: "customers#index"
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
@@ -14,8 +15,9 @@ Rails.application.routes.draw do
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope module: :customer do
+    
     root to: "homes#top"
-    resources :customers
+    resources :customers, only: [:show, :edit, :update]
     resources :recruits
   end
 

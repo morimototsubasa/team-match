@@ -10,6 +10,8 @@ class Customer::RecruitsController < ApplicationController
   
   def index
     @recruit = Recruit.all
+    @customer = Customer.all
+    @genre = Genre.all
   end
   
   def show
