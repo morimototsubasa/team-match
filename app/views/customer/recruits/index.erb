@@ -1,12 +1,31 @@
 <h2>会員情報</h2>
-<p>名前<%= @customer.name %></p>
-
+<p>名前<%= @name %></p>
+<p>学校名<%= @school_name %></p>
+<%= link_to "新規募集", new_recruit_path %>
 
 <h2>募集一覧ページ</h2>
-<% @recruit.each do |recruit| %>
-<p>学校名<%= recruit.school_name %></p>
-<p>顧問氏名<%= recruit.name %></p>
-<p>募集日時<%= recruit.recruit_text %></p>
-<p>種目<%= recruit.genre.genre %></p>
-<% end %>
+<table class="table" >
+  <thead>
+    <tr>
+      <th>顧問氏名</th>
+      <th>学校名</th>
+      <th>種目</th>
+      <th>募集日時</th>
+      <th>募集中の都道府県</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recruit.each do |recruit| %>
+        <tr>
+          <td><%= recruit.name %></td>
+          <td><%= recruit.school_name %></td>
+          <td><%= recruit.genre.genre %></td>
+          <td><%= recruit.recruit_text %></td>
+          <td><%= recruit.city.city %></td>
+          <td><%= link_to "詳細へ", recruit_path(recruit.id) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
 

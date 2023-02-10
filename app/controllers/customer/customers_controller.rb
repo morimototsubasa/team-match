@@ -1,6 +1,5 @@
 class Customer::CustomersController < ApplicationController
 
-
   def edit
    @customer = Customer.find(params[:id])
   end
@@ -17,12 +16,13 @@ class Customer::CustomersController < ApplicationController
      @phone_number = current_customer.phone_number
      @email = current_customer.email
      @school_name = current_customer.school_name
-     @customer = Customer.all
+     @customer = Customer.find(params[:id
+     ])
   end
 
  private
 
   def customer_params
-     params.require(:customer).permit(:name, :name_kana, :name_kana, :phone_number, :email, :school_name)
+     params.require(:customer).permit(:name, :name_kana, :name_kana, :phone_number, :email, :school_name, :comment)
   end
 end

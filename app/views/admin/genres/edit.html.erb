@@ -4,3 +4,4 @@
 <%= f.text_field :genre %>
 <%= f.submit '更新' %>
 <% end %>
+<%=link_to "削除", admin_genre_path(@genre.id), method: :delete %>

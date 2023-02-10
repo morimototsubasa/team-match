@@ -7,5 +7,5 @@
 
 <h2>種目一覧</h2>
 <% @genres.each do |genre| %>
-<p>種目<%= genre.genre %></p>
+<p><%= link_to genre.genre, edit_admin_genre_path(genre.id) %></p>
 <% end %>

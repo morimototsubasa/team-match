@@ -3,4 +3,6 @@
 <%= @name%>
 <p>学校名</p>
 <%= @school_name %>
+<p>その他</p>
+<%= @customer.comment %>
 <%= link_to "編集する", edit_customer_path(current_customer) %>

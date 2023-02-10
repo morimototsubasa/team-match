@@ -1,0 +1,12 @@
+<h2>都道府県追加</h2>
+<%= form_with model:@city, url:admin_cities_path, method: :post do |f| %>
+<p>都道府県名</p>
+<%= f.text_field :city %>
+<%= f.submit '追加' %>
+<% end %>
+
+<h2>都道府県一覧</h2>
+<% @cities.each do |city| %>
+<p><%= city.city %></p>
+<% end %>
+

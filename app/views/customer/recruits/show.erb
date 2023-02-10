@@ -1,5 +1,22 @@
 <h2>募集内容詳細ページ</h2>
-<p>学校名<%= recruit.school_name %></p>
-<p>顧問氏名<%= recruit.name %></p>
-<p>募集日時<%= recruit.recruit_text %></p>
-<p>種目<%= recruit.genre.genre %></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>顧問氏名</th>
+      <th>学校名</th>
+      <th>種目</th>
+      <th>募集日時</th>
+      <th>募集中の都道府県</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @recruit.name %></td>
+      <td><%= @recruit.school_name %></td>
+      <td><%= @recruit.genre.genre %></td>
+      <td><%= @recruit.recruit_text %></td>
+      <td><%= @recruit.city.city %></td>
+      <td><%= link_to "編集", edit_recruit_path(@recruit.id) %></td>
+    </tr>
+  </tbody>
+</table>
