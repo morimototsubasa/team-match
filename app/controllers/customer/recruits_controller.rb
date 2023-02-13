@@ -12,11 +12,6 @@ class Customer::RecruitsController < ApplicationController
   end
 
   def index
-    @name = current_customer.name
-    @name_kana = current_customer.name_kana
-    @phone_number = current_customer.phone_number
-    @email = current_customer.email
-    @school_name = current_customer.school_name
     @recruit = Recruit.all
     @customer = Customer.all
     @genre = Genre.all
@@ -24,6 +19,7 @@ class Customer::RecruitsController < ApplicationController
 
   def show
     @recruit = Recruit.find(params[:id])
+    @recruit_comment = RecruitComment.new
   end
 
   def edit

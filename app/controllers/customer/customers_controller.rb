@@ -16,8 +16,7 @@ class Customer::CustomersController < ApplicationController
      @phone_number = current_customer.phone_number
      @email = current_customer.email
      @school_name = current_customer.school_name
-     @customer = Customer.find(params[:id
-     ])
+     @customer = Customer.find(params[:id])
   end
 
  private

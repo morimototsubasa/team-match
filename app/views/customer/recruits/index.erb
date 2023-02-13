@@ -1,7 +1,6 @@
-<h2>会員情報</h2>
-<p>名前<%= @name %></p>
-<p>学校名<%= @school_name %></p>
-<%= link_to "新規募集", new_recruit_path %>
+<% if customer_signed_in? %>
+  <%= link_to "新規募集", new_recruit_path %>
+<% end %>
 
 <h2>募集一覧ページ</h2>
 <table class="table" >

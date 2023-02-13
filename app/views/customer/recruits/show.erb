@@ -16,7 +16,41 @@
       <td><%= @recruit.genre.genre %></td>
       <td><%= @recruit.recruit_text %></td>
       <td><%= @recruit.city.city %></td>
+      <% if @recruit.customer_id == current_customer.id %>
       <td><%= link_to "編集", edit_recruit_path(@recruit.id) %></td>
+      <% else %>
+      <td><%= link_to "申し込み", message_path %></td>
+      <% end %>
+      <td>
+        <% if @recruit.favorited_by?(current_customer) %>
+        <p>
+          <%= link_to recruit_favorites_path(@recruit), method: :delete do %>
+            ★<%= @recruit.favorites.count %> ブックマーク
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to recruit_favorites_path(@recruit), method: :post do %>
+            ☆<%= @recruit.favorites.count %>　ブックマーク
+          <% end %>
+        </p>
+        <% end %>
+      </td>
+      <td>
+        <div>
+          <p>コメント件数：<%= @recruit.recruit_comments.count %></p>
+          <% @recruit.recruit_comments.each do |recruit_comment| %>
+            <%= recruit_comment.customer.name %>
+            <%= recruit_comment.created_at.strftime('%Y/%m/%d') %><%= recruit_comment.comment %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with model: [@recruit, @recruit_comment] do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "希望日がある方はここにコメント" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

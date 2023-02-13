@@ -1,0 +1,2 @@
+module Customer::RecruitCommentsHelper
+end
