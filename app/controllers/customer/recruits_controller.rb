@@ -31,7 +31,12 @@ class Customer::RecruitsController < ApplicationController
     recruit.update(recruit_params)
     redirect_to recruit_path
   end
-
+  
+  def destroy
+    recruit = Recruit.find(params[:id])
+    recruit = destroy
+    redirect_to recruits_path
+  end
   private
 
   def recruit_params

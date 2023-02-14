@@ -6,4 +6,5 @@
 <p>その他</p>
 <%= @customer.comment %>
 <%= link_to "編集する", edit_customer_path(current_customer) %>
-<p>ブックマーク一覧</p>
+<%= link_to "ブックマーク一覧", favorites_customer_path(@customer) %>
+<p>DM一覧</p>

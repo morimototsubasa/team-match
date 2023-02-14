@@ -20,12 +20,16 @@ Rails.application.routes.draw do
   scope module: :customer do
 
     root to: "recruits#index"
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do 
+      member do
+        get :favorites
+      end
+    end
     resources :recruits, only: [:new, :create, :index, :edit, :show, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resource :recruit_comments, only: [:create]
     end
-  resources :rooms, only: [:create, :index, :show]
+    get 'message/:id' => 'messages#show', as: 'message'
   resources :messages, only: [:create]
   end
 

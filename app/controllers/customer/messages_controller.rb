@@ -1,8 +1,8 @@
 class Customer::MessagesController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
-    rooms = @current_customer.customer_rooms.pluck(:room_id)
-    customer_rooms = CustomerRoom.find_by(Customer_id: @customer.id, room_id: rooms)
+    rooms = current_customer.customer_rooms.pluck(:room_id)
+    customer_rooms = CustomerRoom.find_by(customer_id: @customer.id, room_id: rooms)
     unless customer_rooms.nil?
       @room = customer_rooms.room
     else
@@ -12,10 +12,10 @@ class Customer::MessagesController < ApplicationController
     end
     @messages = @room.messages
     @message = Message.new(room_id: @room.id)
-    render("customers/message_form")
+    render("customer/messages/message_form")
   end
   def create
-    @message = @current_customer.messages.new(message_params)
+    @message = current_customer.messages.new(message_params)
     @message.save
     redirect_to request.referer
   end
