@@ -1,10 +1,22 @@
 <h2>マイページ</h2>
-<p>氏名</p>
-<%= @name%>
-<p>学校名</p>
-<%= @school_name %>
-<p>その他</p>
-<%= @customer.comment %>
-<%= link_to "編集する", edit_customer_path(current_customer) %>
+<table class="table">
+  <tr>
+    <th>登録情報</th>
+    <td><%= link_to "編集する", edit_customer_path(current_customer) %></td>
+  </tr>
+  <tr>
+    <th>氏名</th>
+    <td><%= @name%></td>
+  </tr>
+  <tr>
+    <th>学校名</th>
+    <td><%= @school_name %></td>
+  </tr>
+  <tr>
+    <th>その他</th>
+    <td><%= @customer.comment %></td>
+  </tr>
+</table>
+
 <%= link_to "ブックマーク一覧", favorites_customer_path(@customer) %>
 <p>DM一覧</p>

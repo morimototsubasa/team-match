@@ -1,12 +1,18 @@
-<h2>マイページ編集画面</h2>
-<%= form_with model: @customer do |f| %>
-<p>氏名</p>
-<%= f.text_field :name, autofoucs: true, id:"InputName", placeholder:"氏名" %>
-<p>氏名（カナ）</p>
-<%= f.text_field :name_kana, autofoucs: true, id:"InputNameKana", placeholder:"氏名(カナ）" %>
-<p>学校名</p>
-<%= f.text_field :school_name, autofoucs: true, id:"InputSchoolName", placeholder:"学校名" %>
-<p>その他</p>
-<%= f.text_field :comment, autofoucs: true, id:"InputComment", placeholder:"顧問歴や赴任校など" %>
-<%= f.submit "更新" %>
-<% end %>
+<div class="mt-5 text-center">
+  <h2>マイページ編集画面</h2>
+</div>
+<div class="container mt-5">
+   <div class="row d-flex d-wrap justify-content-center">
+      <%= form_with model: @customer do |f| %>
+      <p>氏名</p>
+      <%= f.text_field :name, autofoucs: true, id:"InputName", placeholder:"氏名" %>
+      <p>氏名（カナ）</p>
+      <%= f.text_field :name_kana, autofoucs: true, id:"InputNameKana", placeholder:"氏名(カナ）" %>
+      <p>学校名</p>
+      <%= f.text_field :school_name, autofoucs: true, id:"InputSchoolName", placeholder:"学校名" %>
+      <p>その他</p>
+      <%= f.text_field :comment, autofoucs: true, id:"InputComment", placeholder:"顧問歴や赴任校など" %>
+      <%= f.submit "更新" %>
+      <% end %>
+   </div>
+</div>
