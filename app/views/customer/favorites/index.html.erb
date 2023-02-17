@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mt-5">
+    <h2>ブックマーク一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>顧問氏名</th>
+          <th>学校名</th>
+          <th>種目</th>
+          <th>募集日時</th>
+          <th>都道府県</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favorites.each do |favorite| %>
+        <tr>
+          <td><%= favorite.recruit.name %></td>
+          <td><%= favorite.recruit.school_name %></td>
+          <td><%= favorite.recruit.genre.genre %></td>
+          <td><%= favorite.recruit.recruit_text %></td>
+          <td><%= favorite.recruit.city.city %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

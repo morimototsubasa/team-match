@@ -1,5 +1,11 @@
 class Customer::FavoritesController < ApplicationController
   
+  def index
+     @customer = Customer.find(params[:customer_id])
+     @favorites = Favorite.where(customer_id: @customer.id)
+   
+  end
+  
   def create
     recruit = Recruit.find(params[:recruit_id])
     favorite = current_customer.favorites.new(recruit_id: recruit.id)

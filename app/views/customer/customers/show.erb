@@ -1,22 +1,29 @@
-<h2>マイページ</h2>
-<table class="table">
-  <tr>
-    <th>登録情報</th>
-    <td><%= link_to "編集する", edit_customer_path(current_customer) %></td>
-  </tr>
-  <tr>
-    <th>氏名</th>
-    <td><%= @name%></td>
-  </tr>
-  <tr>
-    <th>学校名</th>
-    <td><%= @school_name %></td>
-  </tr>
-  <tr>
-    <th>その他</th>
-    <td><%= @customer.comment %></td>
-  </tr>
-</table>
-
-<%= link_to "ブックマーク一覧", favorites_customer_path(@customer) %>
-<p>DM一覧</p>
+<div class="container">
+  <div class="row mt-5">
+    <h2>マイページ</h2>
+    <table class="table">
+      <tr>
+        <th>登録情報</th>
+        <td><%= link_to "編集する", edit_customer_path(current_customer) %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @name%></td>
+      </tr>
+      <tr>
+        <th>学校名</th>
+        <td><%= @school_name %></td>
+      </tr>
+      <tr>
+        <th>その他</th>
+        <td><%= @customer.comment %></td>
+      </tr>
+    </table>
+    <button type="button" class="btn btn-success">
+      <%= link_to "ブックマーク一覧へ", customer_favorites_path(@customer)%>
+    </button>
+    <button type="button" class="btn btn-primary ml-5">
+      <p>DM一覧へ</p>
+    </button>
+  </div>
+</div>

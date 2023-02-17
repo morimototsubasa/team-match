@@ -1,20 +1,23 @@
-<h2>会員一覧</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>学校名</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customer.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td><%= link_to customer.name, customer_path(current_customer)%></td>
-      <td><%= customer.school_name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="container mt-5">
+  <div class="row">
+    <h2>会員一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>学校名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customer.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.name, admin_customer_path(customer.id)%></td>
+          <td><%= customer.school_name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

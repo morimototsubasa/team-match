@@ -1,0 +1,21 @@
+<div class="container mt-5 col-md-3">
+  <div class="row">
+    <h2>DM一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>相手の名前</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @another_customer_rooms.each do |customer_room| %>
+        <tr>
+          <td>
+              <%= link_to customer_room.customer.name, message_path(customer_room.room) %><br>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

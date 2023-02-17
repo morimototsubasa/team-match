@@ -1,0 +1,5 @@
+<% @recruit_comments.each do |comment| %>
+  <%= comment.customer.name %>
+  <%= comment.comment %>
+  <%= link_to "削除", admin_comment_path(comment), method: :delete %>
+<% end %>

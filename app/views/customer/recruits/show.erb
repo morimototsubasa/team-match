@@ -1,56 +1,80 @@
-<h2>募集内容詳細ページ</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>顧問氏名</th>
-      <th>学校名</th>
-      <th>種目</th>
-      <th>募集日時</th>
-      <th>募集中の都道府県</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @recruit.name %></td>
-      <td><%= @recruit.school_name %></td>
-      <td><%= @recruit.genre.genre %></td>
-      <td><%= @recruit.recruit_text %></td>
-      <td><%= @recruit.city.city %></td>
-      <% if @recruit.customer_id == current_customer.id %>
-      <td><%= link_to "編集", edit_recruit_path(@recruit.id) %></td>
-      <% else %>
-      <td><%= link_to "申し込み", message_path %></td>
-      <% end %>
-      <td>
-        <% if @recruit.favorited_by?(current_customer) %>
-        <p>
-          <%= link_to recruit_favorites_path(@recruit), method: :delete do %>
-            ★<%= @recruit.favorites.count %> ブックマーク
+<div class="container mt-5">
+  <div class="row">
+    <h2>募集内容詳細ページ</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>顧問氏名</th>
+          <th>学校名</th>
+          <th>種目</th>
+          <th>募集日時</th>
+          <th>募集中の都道府県</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @recruit.name %></td>
+          <td><%= @recruit.school_name %></td>
+          <td><%= @recruit.genre.genre %></td>
+          <td><%= @recruit.recruit_text %></td>
+          <td><%= @recruit.city.city %></td>
+          <% if @recruit.customer_id == current_customer.id %>
+          <td><%= link_to "編集", edit_recruit_path(@recruit.id) %></td>
+          <% else %>
+          <td><%= link_to "申し込み", message_path %></td>
           <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to recruit_favorites_path(@recruit), method: :post do %>
-            ☆<%= @recruit.favorites.count %>　ブックマーク
+          <% if @recruit.customer_id == current_customer.id %>
+          <% else %>
+          <td>
+            <% if @recruit.favorited_by?(current_customer) %>
+            <p>
+              <%= link_to recruit_favorites_path(@recruit), method: :delete do %>
+                ★<%= @recruit.favorites.count %> ブックマーク
+              <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to recruit_favorites_path(@recruit), method: :post do %>
+                ☆<%= @recruit.favorites.count %>　ブックマーク
+              <% end %>
+            </p>
+            <% end %>
+          </td>
           <% end %>
-        </p>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row mt-5">
+    <h3>コメント一覧</h3>
+    <div class="col-md-8">
+      <div class="ml-5">
+        <%= form_with model: [@recruit, @recruit_comment] do |f| %>
+          <%= f.text_field :comment, rows: '8', placeholder: "希望日はここにコメント" %>
+          <%= f.submit "送信する" %>
         <% end %>
-      </td>
-      <td>
-        <div>
-          <p>コメント件数：<%= @recruit.recruit_comments.count %></p>
-          <% @recruit.recruit_comments.each do |recruit_comment| %>
-            <%= recruit_comment.customer.name %>
-            <%= recruit_comment.created_at.strftime('%Y/%m/%d') %><%= recruit_comment.comment %>
-          <% end %>
-        </div>
-        <div>
-          <%= form_with model: [@recruit, @recruit_comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "希望日がある方はここにコメント" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+    <div>
+      <p>コメント件数：<%= @recruit.recruit_comments.count %></p>
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th>氏名</th>
+            <th>コメント日時</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @recruit.recruit_comments.each do |recruit_comment| %>
+              <td><%= recruit_comment.customer.name %></td>
+              <td><%= recruit_comment.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= recruit_comment.comment %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

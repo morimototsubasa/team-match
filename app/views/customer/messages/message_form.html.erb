@@ -1,29 +1,31 @@
-
-
-<div class="dm">
-  <h1>DMを送る</h1>
-  <div class="message-form">
-    <%= form_with model: @message do |f| %>
-      <%= f.text_area :message %>
-      <!-- メッセージ作成時に必要な :room_idをおいておく -->
-      <%= f.hidden_field :room_id %>
-      <%= f.submit "投稿" %>
-    <% end %>
-  </div>
-  <table>
-    <thead>
-        <tr>
-            <td>募集者名</td>
-            <td>メッセージ</td>
-        </tr>
-    </thead>
-    <tbody>
-        <% @messages.each do |message| %>
-            <tr>
-                <td><%= message.customer.name %></td>
-                <td><%= message.message %></td>
-            </tr>
+<div class="container col-md-4 mt-5">
+  <div class="row">
+    <div class="dm ">
+      <h3>DMを送る</h3>
+      <div class="message-form">
+        <%= form_with model: @message do |f| %>
+          <%= f.text_area :message %>
+          <!-- メッセージ作成時に必要な :room_idをおいておく -->
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信" %>
         <% end %>
-    </tbody>
-</table>
+      </div>
+      <table class="table">
+        <thead>
+            <tr>
+                <th>募集者名</th>
+                <th>メッセージ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @messages.each do |message| %>
+                <tr>
+                    <td><%= message.customer.name %></td>
+                    <td><%= message.message %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
 </div>

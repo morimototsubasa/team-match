@@ -5,7 +5,7 @@ class Recruit < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :recruit_comments, dependent: :destroy
   
-  def favorited_by?(custoemr)
+  def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
 end

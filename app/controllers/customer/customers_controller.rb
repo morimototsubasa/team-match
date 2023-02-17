@@ -19,17 +19,17 @@ class Customer::CustomersController < ApplicationController
      @customer = Customer.find(params[:id])
   end
 
- def favorites
-  favorites = Favorite.where(customer_id: @customer.id).pulck(recruit_id)
-  @favorite_recruits = Recruit.find(favorites)
- end
+ # def favorites
+ #  favorites = Favorite.where(customer_id: @customer.id).pulck(recruit_id)
+ #  @favorite_recruits = Recruit.find(favorites)
+ # end
  private
 
   def customer_params
      params.require(:customer).permit(:name, :name_kana, :name_kana, :phone_number, :email, :school_name, :comment)
   end
   
-  def set_user
-    @customer = Customer.find(params[:id])
-  end
+  # def set_user
+  #   @customer = Customer.find(params[:id])
+  # end
 end

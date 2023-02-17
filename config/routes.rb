@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-      resources :customers
+      resources :customers 
+      resources :comments, only:[:index, :destroy]
       resources :genres, only: [:index, :edit, :update, :destroy, :create]
       resources :cities
       root to: "customers#index"
@@ -20,17 +21,20 @@ Rails.application.routes.draw do
   scope module: :customer do
 
     root to: "recruits#index"
-    resources :customers, only: [:show, :edit, :update] do 
-      member do
-        get :favorites
-      end
+    resources :customers, only: [:show, :edit, :update] do
+      # member do
+      #   get :favorites
+      # end
+       resources :favorites, only: [:index]
     end
     resources :recruits, only: [:new, :create, :index, :edit, :show, :update, :destroy] do
-    resource :favorites, only: [:create, :destroy]
-    resource :recruit_comments, only: [:create]
+      resource :favorites, only: [:create, :destroy]
+      resource :recruit_comments, only: [:create]
     end
     get 'message/:id' => 'messages#show', as: 'message'
-  resources :messages, only: [:create]
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create, :index, :show]
   end
+  
 
 end
