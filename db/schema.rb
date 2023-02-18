@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 2023_02_12_080453) do
     t.string "name_kana", null: false
     t.string "phone_number", null: false
     t.string "school_name", null: false
+    t.boolean "is_customer_status", default: false, null: false
+    t.text "comment"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "comment"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -89,9 +90,9 @@ ActiveRecord::Schema.define(version: 2023_02_12_080453) do
     t.text "recruit_text", null: false
     t.integer "genre_id", null: false
     t.integer "city_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
   end
 
   create_table "rooms", force: :cascade do |t|

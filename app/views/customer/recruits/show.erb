@@ -21,7 +21,7 @@
           <% if @recruit.customer_id == current_customer.id %>
           <td><%= link_to "編集", edit_recruit_path(@recruit.id) %></td>
           <% else %>
-          <td><%= link_to "申し込み", message_path %></td>
+          <td><%= link_to "申し込み", message_path(@recruit.customer_id) %></td>
           <% end %>
           <% if @recruit.customer_id == current_customer.id %>
           <% else %>

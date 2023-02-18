@@ -1,5 +1,26 @@
-<% @recruit_comments.each do |comment| %>
-  <%= comment.customer.name %>
-  <%= comment.comment %>
-  <%= link_to "削除", admin_comment_path(comment), method: :delete %>
-<% end %>
+<div class="container mt-5">
+  <div class="row">
+    <h2>コメント一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>コメント追加者</th>
+          <th>コメント内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recruit_comments.each do |comment| %>
+        <tr>
+          <td><%= comment.customer.name %></td>
+          <td> <%= comment.comment %></td>
+          <td><%= link_to "削除", admin_comment_path(comment), method: :delete %></td>
+        </tr>
+      </tbody>
+       <% end %>
+    </table>
+  </div>
+</div>
+
+  
+ 
+ 

@@ -10,8 +10,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :name_kana, null: false
       t.string :phone_number, null: false
       t.string :school_name, null: false
-      
-    
+      t.boolean :is_customer_status, default: false, null: false
+      t.text :comment
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

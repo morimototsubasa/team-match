@@ -7,7 +7,7 @@ class Customer::RoomsController < ApplicationController
     current_customer_rooms.each do |customer_room|
       my_room_id << customer_room.room.id
     end
-    # 自分のroom_idでuser_idが自分じゃないのを取得
+    # 自分のroom_idでcustomer_idが自分じゃないのを取得
     @another_customer_rooms = CustomerRoom.where(room_id: my_room_id).where.not(customer_id: current_customer.id)
   end
 end

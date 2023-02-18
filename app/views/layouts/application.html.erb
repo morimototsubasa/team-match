@@ -11,28 +11,33 @@
   </head>
 
   <body>
-    <header class="bg-dark text-light">
-      <div class="row">
-        <h2 class="col-md-4 "><%= link_to "Team-Match", root_path %></h2>
-        <div class="col-md-8 btn-toolbar">
-          <ul class="navbar-nav float-right">
+    <header class="bg-dark">
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <h2 class="title"><%= link_to "Team-Match", root_path , style: "font-family: HiraMinPro-W6; color: #ffffff;"%></h2>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right"　,style: "color: #ffffff;">
             <% if customer_signed_in? %>
+            <!--会員ログインしている場合-->
               <li><%= link_to "新規募集", new_recruit_path %></li>
               <li><%= link_to "募集一覧", recruits_path %></li>
               <li><%= link_to "マイページ", customer_path(current_customer.id) %></li>
               <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
             <% elsif admin_signed_in? %>
+            <!--管理者ログインしている場合-->
               <li><%= link_to "会員一覧", admin_customers_path %></li>
+              <li><%= link_to "コメント一覧", admin_comments_path %></li>
               <li><%= link_to "種目追加", admin_genres_path %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
             <% else %>
+            <!--どちらにもログインしていない時-->
               <li><%= link_to "募集一覧", recruits_path %></li>
               <li><%= link_to "新規会員登録", new_customer_registration_path %></li>
               <li><%= link_to "ログイン", new_customer_session_path %></li>
             <% end %>
-              
           </ul>
-        </div>
+        </nav>
       </div>
     </header>
     <%= yield %>

@@ -1,4 +1,5 @@
 class Admin::CitiesController < ApplicationController
+  
   def new
   end
 

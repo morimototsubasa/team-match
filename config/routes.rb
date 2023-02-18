@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-      resources :customers 
+      resources :customers do
+          patch 'retire' => 'customers#retire', as: 'retire'
+      end
       resources :comments, only:[:index, :destroy]
       resources :genres, only: [:index, :edit, :update, :destroy, :create]
       resources :cities

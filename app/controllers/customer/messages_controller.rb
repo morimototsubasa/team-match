@@ -14,11 +14,13 @@ class Customer::MessagesController < ApplicationController
     @message = Message.new(room_id: @room.id)
     render("customer/messages/message_form")
   end
+  
   def create
     @message = current_customer.messages.new(message_params)
     @message.save
     redirect_to request.referer
   end
+  
   private
   def message_params
     params.require(:message).permit(:message, :room_id)

@@ -6,6 +6,7 @@ class CreateRecruits < ActiveRecord::Migration[6.1]
       t.text :recruit_text, null: false
       t.integer :genre_id, null: false
       t.integer :city_id, null: false
+      t.integer :customer_id, null: false
       t.timestamps
     end
   end
