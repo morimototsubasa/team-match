@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   scope module: :customer do
 
-    root to: "recruits#index"
+    root to: "homes#top"
     resources :customers, only: [:show, :edit, :update] do
       # member do
       #   get :favorites

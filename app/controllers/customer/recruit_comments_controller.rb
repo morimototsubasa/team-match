@@ -1,5 +1,5 @@
 class Customer::RecruitCommentsController < ApplicationController
-  
+  before_action :authenticate_customer!
   def index
     @recruit_comment = RecruitComment.all
   end

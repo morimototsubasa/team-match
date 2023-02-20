@@ -14,4 +14,10 @@ class Customer < ApplicationRecord
   has_many :recruit_comments, dependent: :destroy
   has_many :customer_rooms
   has_many :messages
+  
+  validates :name, presence: true
+  validates :name_kana, presence: true
+  validates :phone_number, presence: true
+  validates :school_name, presence: true
+  validates :email, presence: true
 end

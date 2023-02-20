@@ -11,35 +11,34 @@
   </head>
 
   <body>
-    <header class="bg-dark">
-      <div class="container">
-        <nav class="nav navbar-nav navbar-left">
-          <h2 class="title"><%= link_to "Team-Match", root_path , style: "font-family: HiraMinPro-W6; color: #ffffff;"%></h2>
-        </nav>
-        <nav>
-          <ul class="nav navbar-nav navbar-right"　,style: "color: #ffffff;">
-            <% if customer_signed_in? %>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/">Team-Match</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-5">
+              <% if customer_signed_in? %>
             <!--会員ログインしている場合-->
-              <li><%= link_to "新規募集", new_recruit_path %></li>
-              <li><%= link_to "募集一覧", recruits_path %></li>
-              <li><%= link_to "マイページ", customer_path(current_customer.id) %></li>
-              <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+              <li class="ml-3"><%= link_to "新規募集", new_recruit_path %></li>
+              <li class="ml-3"><%= link_to "募集一覧", recruits_path %></li>
+              <li class="ml-3"><%= link_to "マイページ", customer_path(current_customer.id) %></li>
+              <li class="ml-3"><%= link_to "ログアウト", destroy_customer_session_path, data: { confirm: 'ログアウトしますか？'}, method: :delete %></li>
             <% elsif admin_signed_in? %>
             <!--管理者ログインしている場合-->
-              <li><%= link_to "会員一覧", admin_customers_path %></li>
-              <li><%= link_to "コメント一覧", admin_comments_path %></li>
-              <li><%= link_to "種目追加", admin_genres_path %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+              <li class="ml-3"><%= link_to "会員一覧", admin_customers_path %></li>
+              <li class="ml-3"><%= link_to "コメント一覧", admin_comments_path %></li>
+              <li class="ml-3"><%= link_to "種目追加", admin_genres_path %></li>
+              <li class="ml-3"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
             <% else %>
             <!--どちらにもログインしていない時-->
-              <li><%= link_to "募集一覧", recruits_path %></li>
-              <li><%= link_to "新規会員登録", new_customer_registration_path %></li>
-              <li><%= link_to "ログイン", new_customer_session_path %></li>
+              <li class="ml-3"><%= link_to "募集一覧", recruits_path %></li>
+              <li class="ml-3"><%= link_to "新規会員登録", new_customer_registration_path %></li>
+              <li class="ml-3"><%= link_to "ログイン", new_customer_session_path %></li>
             <% end %>
-          </ul>
-        </nav>
-      </div>
-    </header>
+            </ul>
+        </div>
+    </nav>  
     <%= yield %>
   </body>
 </html>

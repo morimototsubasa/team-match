@@ -6,6 +6,14 @@
   </div>
 <div class="row">
   <%= form_with model:@recruit,url:recruits_path,local:true do |f| %>
+    <% if @recruit.errors.any? %>
+    <%= @recruit.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @recruit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <% end %>
   <table class="table">
     <tbody>
       <tr>
@@ -18,7 +26,7 @@
       </tr>
       <tr>
         <th>募集日時(複数選択可）</th>
-        <td><%= f.text_area :recruit_text, autofoucs: true, id:"InputRecruitDate1m", placeholder:"例:2022/3/4 3/5s 3/6" %></td>
+        <td><%= f.text_area :recruit_text, autofoucs: true, id:"InputRecruitDate1m", placeholder:"例:2022/3/4 3/5 3/6" %></td>
       </tr>
       <tr>
         <th>種目</th>
@@ -31,7 +39,7 @@
     </tbody>
   </table>
   <div class="text-center">
-    <%= f.submit "新規登録" , class: "btn btn-primary pull-right" %>
+    <%= f.submit "新規登録", data: { confirm: '募集は１ヶ月で自動的に削除されます'}, class: "btn btn-primary pull-right" %>
   </div>
   <% end %>
 </div>

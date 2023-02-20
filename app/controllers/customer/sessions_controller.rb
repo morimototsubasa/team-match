@@ -5,7 +5,7 @@ class Customer::SessionsController < Devise::SessionsController
 
   protected
 
-def reject_inactive_customer
+  def reject_inactive_customer
     @customer = Customer.find_by(name: params[:customer][:name])
     if @customer
       if @customer.valid_password?(params[:customer][:password]) && !@customer.is_customer_status

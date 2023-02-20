@@ -1,9 +1,8 @@
 class Customer::FavoritesController < ApplicationController
-  
+  before_action :authenticate_customer!
   def index
      @customer = Customer.find(params[:customer_id])
      @favorites = Favorite.where(customer_id: @customer.id)
-   
   end
   
   def create

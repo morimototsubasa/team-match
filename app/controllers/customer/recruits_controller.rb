@@ -1,5 +1,5 @@
 class Customer::RecruitsController < ApplicationController
-
+  before_action :authenticate_customer!, except:[:index]
   def new
     @recruit = Recruit.new
   end
@@ -7,8 +7,11 @@ class Customer::RecruitsController < ApplicationController
   def create
     @recruit = Recruit.new(recruit_params)
     @recruit.customer_id = current_customer.id
-    @recruit.save
-    redirect_to recruits_path
+    if @recruit.save
+      redirect_to recruits_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -28,8 +31,11 @@ class Customer::RecruitsController < ApplicationController
 
   def update
     recruit = Recruit.find(params[:id])
-    recruit.update(recruit_params)
-    redirect_to recruit_path
+    if recruit.update(recruit_params)
+      redirect_to recruit_path
+    else
+      render :edit
+    end
   end
   
   def destroy

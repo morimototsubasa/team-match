@@ -1,5 +1,5 @@
 class Customer::RoomsController < ApplicationController
-  
+  before_action :authenticate_customer!
   def index
     # ログインユーザー所属ルームID取得
     current_customer_rooms = current_customer.customer_rooms
