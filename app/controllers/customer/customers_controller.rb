@@ -17,6 +17,7 @@ class Customer::CustomersController < ApplicationController
      @email = current_customer.email
      @school_name = current_customer.school_name
      @customer = Customer.find(params[:id])
+     @recruits = @customer.recruits
   end
   
  

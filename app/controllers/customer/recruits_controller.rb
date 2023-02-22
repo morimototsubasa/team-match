@@ -30,8 +30,8 @@ class Customer::RecruitsController < ApplicationController
   end
 
   def update
-    recruit = Recruit.find(params[:id])
-    if recruit.update(recruit_params)
+    @recruit = Recruit.find(params[:id])
+    if @recruit.update(recruit_params)
       redirect_to recruit_path
     else
       render :edit

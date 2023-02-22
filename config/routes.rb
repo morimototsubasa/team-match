@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resource :recruit_comments, only: [:create]
     end
+    get "search" => "searches#search"
     get 'message/:id' => 'messages#show', as: 'message'
     resources :messages, only: [:create]
     resources :rooms, only: [:create, :index, :show]

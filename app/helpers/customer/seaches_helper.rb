@@ -1,0 +1,2 @@
+module Customer::SeachesHelper
+end
