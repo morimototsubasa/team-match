@@ -1,9 +1,12 @@
-<div class="jambotron">
-  <div class="container">
+<% content_for :css do %>
+  <%= stylesheet_link_tag "homes" %>
+<% end %>
+<body class="jambotron">
+  <div class="container text-center">
     <h1>Team-Match</h1>
     <h4>このサイトでは気軽に部活動の練習試合を組むことができます<br>小学生から大学生まで幅広い年齢層が利用できます。<br>まずは、会員登録をしてみてくだいさい</h4>
     <button type="button" class="btn btn-success">
-    <%= link_to "会員登録へ", new_customer_registration_path %>
+    <%= link_to "会員登録へ", new_customer_registration_path ,:style=>"color:white"%>
     </button>
   </div>
-</div>
+</body>

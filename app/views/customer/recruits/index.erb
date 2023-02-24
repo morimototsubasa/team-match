@@ -27,10 +27,11 @@
               <td><%= recruit.genre.genre %></td>
               <td><%= recruit.recruit_text %></td>
               <td><%= recruit.city.city %></td>
-              <td><button type="button" class="btn btn-outline-success"><%= link_to "詳細へ", recruit_path(recruit.id) %></button></td>
+              <td><button type="button" class="btn btn-primary"><%= link_to "詳細へ", recruit_path(recruit.id) ,:style=>"color:white"%></button></td>
             </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @recruit %>
   </div>
 </div>
