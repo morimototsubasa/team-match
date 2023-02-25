@@ -15,7 +15,7 @@ class Customer::RecruitsController < ApplicationController
   end
 
   def index
-    @recruit = Recruit.all.page(params[:page]).per(8)
+    @recruit = Recruit.all
     @customer = Customer.all
     @genre = Genre.all
   end
