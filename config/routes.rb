@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
       resources :comments, only:[:index, :destroy]
       resources :genres, only: [:index, :edit, :update, :destroy, :create]
-      resources :cities
+      resources :cities, onlly: [:index, :create, :destroy]
       root to: "customers#index"
   end
 

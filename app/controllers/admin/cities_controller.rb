@@ -1,5 +1,5 @@
 class Admin::CitiesController < ApplicationController
-  
+
   def new
   end
 
@@ -7,13 +7,19 @@ class Admin::CitiesController < ApplicationController
     @city = City.new
     @cities = City.all
   end
-  
+
+  def destroy
+    city = City.find(params[:id])
+    city.destroy
+    redirect_to admin_cities_path
+  end
+
   def create
     city = City.new(city_params)
     city.save
     redirect_to admin_cities_path
   end
-  
+
   private
 
   def city_params

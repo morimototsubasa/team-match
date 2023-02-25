@@ -7,6 +7,6 @@
 
 <h2>都道府県一覧</h2>
 <% @cities.each do |city| %>
-<p><%= city.city %></p>
+<p><%= link_to city.city, admin_city_path(city.id), method: :delete %></p>
 <% end %>
 
