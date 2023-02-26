@@ -3,6 +3,7 @@
     <div class="dm ">
       <h2>DMを送る</h2>
       <p>※ここでは詳細な日程や場所を話し合って決めてください</p>
+      <%= flash[:notice] %>
       <div class="message-form">
         <%= form_with model: @message do |f| %>
           <%= f.text_area :message %>

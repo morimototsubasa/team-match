@@ -18,8 +18,15 @@ class Customer::MessagesController < ApplicationController
   
   def create
     @message = current_customer.messages.new(message_params)
-    @message.save
-    redirect_to request.referer
+    if @message.save
+      redirect_to request.referer
+    else
+      flash[:notice] = "※空欄では送信できません"
+      redirect_to request.referer
+    end
+    
+      
+    
   end
   
   private

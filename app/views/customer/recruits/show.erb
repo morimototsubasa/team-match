@@ -49,6 +49,7 @@
     <h3>コメント一覧</h3>
     <div class="col-md-8">
       <div class="ml-5">
+        <%= flash[:notice] %>
         <%= form_with model: [@recruit, @recruit_comment] do |f| %>
           <%= f.text_field :comment, rows: '8', placeholder: "希望日はここにコメント" %>
           <%= f.submit "送信する" %>
