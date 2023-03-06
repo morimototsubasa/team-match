@@ -1,5 +1,6 @@
 class Customer::CustomersController < ApplicationController
- before_action :authenticate_customer!
+ before_action :is_matching_login_customer
+ 
   def edit
    @customer = Customer.find(params[:id])
   end
@@ -32,6 +33,12 @@ class Customer::CustomersController < ApplicationController
      params.require(:customer).permit(:name, :name_kana, :name_kana, :phone_number, :email, :school_name, :comment)
   end
 
+  def is_matching_login_customer
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to recruits_path
+    end
+  end
   # def set_user
   #   @customer = Customer.find(params[:id])
   # end

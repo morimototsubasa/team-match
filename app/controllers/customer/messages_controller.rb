@@ -33,4 +33,6 @@ class Customer::MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:message, :room_id)
   end
+  
+  
 end

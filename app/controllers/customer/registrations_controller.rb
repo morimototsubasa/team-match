@@ -28,4 +28,10 @@ def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :phone_number, :school_name])
 end
 
+def is_matching_login_customer
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to recruits_path
+    end
+end
 end

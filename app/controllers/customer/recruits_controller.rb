@@ -1,5 +1,5 @@
 class Customer::RecruitsController < ApplicationController
-  before_action :authenticate_customer!, except:[:index]
+  before_action :is_matching_login_customer, only: [:edit, :destroy, :update]
   def new
     @recruit = Recruit.new
   end
@@ -37,15 +37,22 @@ class Customer::RecruitsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
-    recruit = Recruit.find(params[:id])
-    recruit = destroy
+    @recruit = Recruit.find(params[:id])
+    @recruit.destroy(recruit_params)
     redirect_to recruits_path
   end
   private
 
   def recruit_params
     params.require(:recruit).permit(:school_name, :recruit_text, :name, :genre_id, :city_id)
+  end
+
+  def is_matching_login_customer
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to recruits_path
+    end
   end
 end
